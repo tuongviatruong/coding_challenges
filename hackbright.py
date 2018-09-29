@@ -139,14 +139,50 @@ def add_to_zero(nums):
     True
 
     """
-    for i in nums:
-        for j in nums:
-            if i + j == 0:
-                return True
+    # for i in nums:
+    #     for j in nums:
+    #         if i + j == 0:
+    #             return True
+    # return False
+    # runtime O(n^2)
+
+    nums_set = set(nums)
+    for x in nums:
+        if -x in nums_set:
+            return True
     return False
+    # runtime O(n)
 
 
+def is_anagram_of_palindrome(word):
+    """Is the word an anagram of a palindrome?
+    >>> is_anagram_of_palindrome("a")
+    True
 
+    >>> is_anagram_of_palindrome("ab")
+    False
+
+    >>> is_anagram_of_palindrome("aab")
+    True
+
+    >>> is_anagram_of_palindrome("arceace")
+    True
+
+    >>> is_anagram_of_palindrome("arceaceb")
+    False
+    """
+    seen = {}
+    for letter in word:
+        count = seen.get(letter,0)
+        seen[letter] = count + 1
+        
+    num_of_odd = 0
+    for count in seen.values():
+        if count % 2 == 1:
+            num_of_odd += 1
+    if num_of_odd == 1 or num_of_odd == 0:
+        return True
+    return False
 
 
 if __name__ == '__main__':

@@ -177,8 +177,8 @@ def is_anagram_of_palindrome(word):
         seen[letter] = count + 1
         
     num_of_odd = 0
-    for count in seen.values():
-        if count % 2 == 1:
+    for num in seen.values():
+        if num % 2 == 1:
             num_of_odd += 1
     if num_of_odd == 1 or num_of_odd == 0:
         return True

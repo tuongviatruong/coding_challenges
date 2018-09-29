@@ -123,20 +123,21 @@ def has_balanced_brackets(phrase):
 
 def add_to_zero(nums):
     """Given list of ints, return True if any two nums sum to 0.
-    >>> add_to_zero([])
-    False
 
-    >>> add_to_zero([1])
-    False
+        >>> add_to_zero([])
+        False
 
-    >>> add_to_zero([1, 2, 3])
-    False
+        >>> add_to_zero([1])
+        False
 
-    >>> add_to_zero([1, 2, 3, -2])
-    True
+        >>> add_to_zero([1, 2, 3])
+        False
 
-    >>> add_to_zero([0, 1, 2])
-    True
+        >>> add_to_zero([1, 2, 3, -2])
+        True
+
+        >>> add_to_zero([0, 1, 2])
+        True
 
     """
     # for i in nums:
@@ -156,26 +157,26 @@ def add_to_zero(nums):
 
 def is_anagram_of_palindrome(word):
     """Is the word an anagram of a palindrome?
-    >>> is_anagram_of_palindrome("a")
-    True
+        >>> is_anagram_of_palindrome("a")
+        True
 
-    >>> is_anagram_of_palindrome("ab")
-    False
+        >>> is_anagram_of_palindrome("ab")
+        False
 
-    >>> is_anagram_of_palindrome("aab")
-    True
+        >>> is_anagram_of_palindrome("aab")
+        True
 
-    >>> is_anagram_of_palindrome("arceace")
-    True
+        >>> is_anagram_of_palindrome("arceace")
+        True
 
-    >>> is_anagram_of_palindrome("arceaceb")
-    False
+        >>> is_anagram_of_palindrome("arceaceb")
+        False
     """
     seen = {}
     for letter in word:
         count = seen.get(letter,0)
         seen[letter] = count + 1
-        
+
     num_of_odd = 0
     for num in seen.values():
         if num % 2 == 1:
@@ -184,6 +185,43 @@ def is_anagram_of_palindrome(word):
         return True
     return False
 
+
+def binary_search(val):
+    """Using binary search, find val in range 1-100. Return # of guesses.
+
+        >>> binary_search(50)
+        1
+
+        >>> binary_search(25)
+        2
+
+        >>> binary_search(75)
+        2
+
+        >>> binary_search(31) <= 7
+        True
+
+        >>> max([binary_search(i) for i in range(1, 101)])
+        7
+    """
+
+    assert 0 < val < 101, "Val must be between 1-100"
+
+    num_guesses = 0
+    higher_than = 0
+    lower_than = 101
+    guess = None
+
+    while guess != val:
+        num_guesses += 1
+        guess = (lower_than - higher_than) / 2 + higher_than
+
+        if val > guess:
+            higher_than = guess
+        elif val < guess:
+            lower_than = guess
+
+    return num_guesses
 
 if __name__ == '__main__':
     import doctest

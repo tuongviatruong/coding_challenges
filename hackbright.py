@@ -223,6 +223,18 @@ def binary_search(val):
 
     return num_guesses
 
+def count_recursively(lst):
+    """Return number of items in a list, using recursion.
+        >>> count_recursively([])
+        0
+
+        >>> count_recursively([1, 2, 3])
+        3
+    """
+    if lst == []:
+        return 0
+    return count_recursively(lst[:-1]) + 1
+
 if __name__ == '__main__':
     import doctest
     if doctest.testmod().failed == 0:

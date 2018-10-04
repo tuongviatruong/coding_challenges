@@ -14,17 +14,16 @@ var newBoard;
 function Neighbors(Board, x, y)
 {
 	var n = 0
-	for(dx=-1;dx < 1; ++dx)
+	for(var dx=-1; dx < 1; dx++)
     {
-		for(dy=-1;dy < 1; ++dy)
+		for(var dy=-1; dy < 1; dy++)
 		{
-			var ax = x+dx;
-    		var ay = y+dy;
-    		if(Board[ax][ay]==alive) {
-                if (ax !== x || ay !== y){
+            if ((dx == 0) && (dy == 0)) continue;
+			var ax = (x + dx + xsize) % xsize;
+    		var ay = (y + dy + ysize) % ysize;
+    		if(Board[ax][ ay ]==alive) 
                 ++n;
-                }
-            }
+                
 		}
     }
 	return n;

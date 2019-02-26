@@ -1,44 +1,30 @@
 def has_balanced_parens(phrase):
     """Does a string have balanced parentheses?
-    These are fine::
 
-       >>> has_balanced_brackets("<ok>")
+    For example::
+
+       >>> has_balanced_parens("()")
        True
 
-       >>> has_balanced_brackets("<{ok}>")
+       >>> has_balanced_parens("(Oh Noes!)(")
+       False
+
+       >>> has_balanced_parens("((There's a bonus open paren here.)")
+       False
+
+       >>> has_balanced_parens(")")
+       False
+
+       >>> has_balanced_parens("(")
+       False
+
+       >>> has_balanced_parens("(This has (too many closes.) ) )")
+       False
+
+    If you receive a string with no parentheses, consider it balanced::
+
+       >>> has_balanced_parens("Hey...there are no parens here!")
        True
-
-       >>> has_balanced_brackets("<[{(yay)}]>")
-       True
-
-    These are invalid, since they have too many open brackets::
-
-       >>> has_balanced_brackets("(Oops!){")
-       False
-
-       >>> has_balanced_brackets("{[[This has too many open square brackets.]}")
-       False
-
-    These are invalid, as they close brackets that weren't open::
-
-       >>> has_balanced_brackets(">")
-       False
-
-       >>> has_balanced_brackets("(This has {too many} ) closers. )")
-       False
-
-    Here's a case where the number of brackets opened matches
-    the number closed, but in the wrong order::
-
-        >>> has_balanced_brackets("<{Not Ok>}")
-        False
-
-    If you receive a string with no brackets, consider it balanced::
-
-       >>> has_balanced_brackets("No brackets here!")
-       True
-
-
     """
     # stack = []
 
